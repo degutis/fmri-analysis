@@ -12,16 +12,18 @@ cwd=$3
 
 mri_convert ${fs_dir}/mri/brain.mgz fs_brain.nii
 
-ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=4
-export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS
-
 n4bold_file=$(remove_ext ${bold_file})_n4.nii
 N4BiasFieldCorrection -i ${bold_file} -o ${n4bold_file}
 bold_file=${n4bold_file}
 
+#bold_brain_file=$(remove_ext ${bold_file})_brain.nii
+#3dAutomask -apply_prefix ${bold_brain_file} ${bold_file}
+#bold_file=${bold_brain_file}
+
 bold_brain_file=$(remove_ext ${bold_file})_brain.nii
-3dAutomask -apply_prefix ${bold_brain_file} ${bold_file}
+bet ${bold_file} ${bold_brain_file} -f 0.075
 bold_file=${bold_brain_file}
+gunzip ${bold_file}.gz
 
 antsRegistration \
     --verbose 1 \

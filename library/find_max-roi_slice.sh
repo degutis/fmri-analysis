@@ -21,7 +21,7 @@ fi
 cur_dir=$(pwd)
 tmp_dir=$(mktemp -d)
 cp $roi_file $tmp_dir
-cd $tmp_dir
+cd $tmp_dir  
 
 # get the number of slices in the roi file
 number_of_slices=$(fslval ${roi_file} $dimn)

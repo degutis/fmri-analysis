@@ -44,6 +44,7 @@ def surftransform_gii(gii_surf, transforms, invert_transform_flags, cwd=None):
     :param cwd:
     :return:
     """
+
     if cwd is None:
         cwd = os.path.dirname(os.path.normpath(gii_surf))
     # convert gii to csv
@@ -55,6 +56,7 @@ def surftransform_gii(gii_surf, transforms, invert_transform_flags, cwd=None):
         input_file=csv_surf,
         transforms=transforms,
         invert_transform_flags=invert_transform_flags,
+        #invert_transform_flags=[False,False,False],
     ).run(cwd=cwd)
     csv_surf_transformed = result_ApplyTransformsToPoints.outputs.output_file
     # convert csv to gii
@@ -63,7 +65,6 @@ def surftransform_gii(gii_surf, transforms, invert_transform_flags, cwd=None):
     ).run(cwd=cwd)
     gii_surf_transformed = result_CSVToGifti.outputs.out_file
     return gii_surf_transformed
-
 
 def surftransform_fs(fs_surf, transforms, invert_transform_flags, out_file, cwd=None):
     """
@@ -302,7 +303,7 @@ def import_fs_ribbon_to_func(fs_dir, analysis_dir, force=False):
         if (
             subprocess.run(
                 [
-                    "/data/p_02389/code/fmri-analysis/library/" + "import-fs-ribbon.sh",
+                    "import-fs-ribbon.sh",
                     fs_dir,
                     analysis_dir,
                     os.path.join(analysis_dir, "fs_t1_in-func.nii"),
