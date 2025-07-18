@@ -186,6 +186,7 @@ def mp2rage_recon_all(inv2_file,uni_file,output_fs_dir=None, gdc_coeff_file=None
     os.system("recon-all" + \
               " -hires" + \
               " -autorecon2" + " -autorecon3"\
+              " -careg" + \
               " -sd " + fs_dir + \
               " -s " + sub + \
               " -expert " + os.path.join(cwd,'expert.opts') + \
