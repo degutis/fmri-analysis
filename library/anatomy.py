@@ -155,6 +155,7 @@ def mp2rage_recon_all(inv2_file,uni_file,output_fs_dir=None, gdc_coeff_file=None
           " -i " + uni_mprageized_file + \
           " -hires" + \
           " -autorecon1" + \
+          " -notal-check" + \
           " -noskullstrip" + \
           " -sd " + fs_dir + \
           " -s " + sub + \
@@ -187,6 +188,7 @@ def mp2rage_recon_all(inv2_file,uni_file,output_fs_dir=None, gdc_coeff_file=None
               " -hires" + \
               " -autorecon2" + " -autorecon3"\
               " -careg" + \
+              " -notal-check" + \
               " -sd " + fs_dir + \
               " -s " + sub + \
               " -expert " + os.path.join(cwd,'expert.opts') + \
